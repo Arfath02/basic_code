@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website - Reviews</title>
+    <style>
+        /* Add your styling for the reviews page here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+
+        .review {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .review img {
+            float: left;
+            margin-right: 15px;
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Your Website - Reviews</h1>
+    </header>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/contact">Contact</a>
+    </nav>
+
+    <section>
+        <h2>Customer Reviews</h2>
+
+        {% if reviews %}
+            {% for review in reviews %}
+                <div class="review">
+                    <img src="{{ review['user_photo'] }}" alt="{{ review['user_name'] }} Photo">
+                    <h3>{{ review['review_title'] }} by {{ review['user_name'] }}</h3>
+                    <p>{{ review['user_review'] }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No reviews yet.</p>
+        {% endif %}
+    </section>
+
+    <footer>
+        &copy; 2023 Your Website. All rights reserved.
+    </footer>
+
+</body>
+</html>
